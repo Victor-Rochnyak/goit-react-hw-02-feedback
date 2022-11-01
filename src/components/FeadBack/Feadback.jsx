@@ -2,6 +2,8 @@ import React from 'react';
 import Statistics from 'components/Statistics/Statistics';
 import Notification from 'components/Notification/Notification';
 import FeedbackOptions from 'components/ButtonClick/ButtonClick';
+// Стилі
+import {Div,H2,DivButton,} from './FeadBack.styles'
 
 class FeadBack extends React.Component {
   state = {
@@ -15,28 +17,7 @@ class FeadBack extends React.Component {
   this.setState(prevState=>({
     [event.target.name]: prevState[event.target.name] +1,
   }))
-  // onClickGod = () => {
-  //   this.setState(prevState => {
-  //     return {
-  //       good: prevState.good + 1,
-  //     };
-  //   });
-  // };
-  // onClickNeutral = () => {
-  //   this.setState(prevState => {
-  //     return {
-  //       neutral: prevState.neutral + 1,
-  //     };
-  //   });
-  // };
-  // onClickBad = () => {
-  //   this.setState(prevState => {
-  //     return {
-  //       bad: prevState.bad + 1,
-  //     };
-  //   });
-  // };
-
+ 
   totalFeedback = () => {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
@@ -47,18 +28,18 @@ class FeadBack extends React.Component {
   };
   render() {
     return (
-      <div>
-        <h1>Please leave feedback</h1>
+      <Div>
+        <H2>Please leave feedback</H2>
         {
-          <div>
+          <DivButton>
             <FeedbackOptions
               options={this.state}
               onFeedback={this.onClickBtn}
             />
-          </div>
+          </DivButton>
         }
 
-        <h1>Statistics</h1>
+        <H2>Statistics</H2>
         {this.totalFeedback() ? (
           <div>
             <Statistics
@@ -72,7 +53,7 @@ class FeadBack extends React.Component {
         ) : (
           <Notification message="There is no feedback" />
         )}
-      </div>
+      </Div>
     );
   }
 }

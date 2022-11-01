@@ -1,3 +1,5 @@
+import {Button} from './ButtonClick.styled'
+
 export default function FeedbackOptions({
   onFeedback,
   options,
@@ -5,9 +7,9 @@ export default function FeedbackOptions({
   return (
     <div>
      {Object.keys(options).map(key => (
-      <button key={key} onClick={onFeedback} name={key}>
+      <Button key={key} onClick={onFeedback} name={key}>
         {key}
-      </button>
+      </Button>
     ))}
     </div>
   );
