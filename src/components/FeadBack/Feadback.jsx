@@ -10,27 +10,32 @@ class FeadBack extends React.Component {
     bad: 0,
   };
 
-  onClickGod = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-  onClickNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  onClickBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
-  };
+
+  onClickBtn = event => 
+  this.setState(prevState=>({
+    [event.target.name]: prevState[event.target.name] +1,
+  }))
+  // onClickGod = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       good: prevState.good + 1,
+  //     };
+  //   });
+  // };
+  // onClickNeutral = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       neutral: prevState.neutral + 1,
+  //     };
+  //   });
+  // };
+  // onClickBad = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       bad: prevState.bad + 1,
+  //     };
+  //   });
+  // };
 
   totalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -47,9 +52,8 @@ class FeadBack extends React.Component {
         {
           <div>
             <FeedbackOptions
-              onClickGod={this.onClickGod}
-              onClickNeutral={this.onClickNeutral}
-              onClickBad={this.onClickBad}
+              options={this.state}
+              onFeedback={this.onClickBtn}
             />
           </div>
         }

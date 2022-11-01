@@ -1,19 +1,14 @@
 export default function FeedbackOptions({
-  onClickGod,
-  onClickNeutral,
-  onClickBad,
+  onFeedback,
+  options,
 }) {
   return (
     <div>
-      <button type="button" onClick={onClickGod}>
-        God
+     {Object.keys(options).map(key => (
+      <button key={key} onClick={onFeedback} name={key}>
+        {key}
       </button>
-      <button type="button" onClick={onClickNeutral}>
-        Neutral
-      </button>
-      <button type="button" onClick={onClickBad}>
-        Bad
-      </button>
+    ))}
     </div>
   );
 }
